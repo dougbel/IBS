@@ -21,12 +21,12 @@ class Voronoi
 public:
     
     
-    Voronoi (PointCloud::Ptr pointCloud );
+    Voronoi (PointCloudT::Ptr pointCloud );
     
     void calculate();
     
     
-    PointCloud::Ptr bigCloud;   //TODO cambiarle el nombre a wholeCloud
+    PointCloudT::Ptr bigCloud;   //TODO cambiarle el nombre a wholeCloud
     
     std::vector< PointT > vornoiVertex;
     

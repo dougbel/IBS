@@ -29,18 +29,18 @@ void Voronoi::calculate()
     
      orgQhull::Qhull qhull;
     
-    #if DEBUG
+    //#if DEBUG
     std::cout<<" Runing Qhull Voronoi"<<endl;
-    #endif
+    //#endif
 
     // Call the lib with -v flag to get voronoi diagram
     qhull.runQhull("",DIM,int(bigCloud->size()),&cloud_coord.at(0),"v");
     // Only way to read output data (that I find) is to read the output string and parse everything
     qhull.outputQhull("o");
     
-    #if DEBUG    
+    //#if DEBUG    
     std::cout<<"Done ... Reading output "<<endl;
-    #endif
+    //#endif
     
 
     //Start reading the output string and parse it
@@ -89,9 +89,9 @@ void Voronoi::calculate()
         num_vertex++;
     }
     
-    #if DEBUG
+    //#if DEBUG
     std::cout <<"num vertex: " << total_vertices << " " << this->vornoiVertex.size() <<std::endl;
-    #endif
+    //#endif
     
     //Get id of voronoi vertices comprising each region of point cloud
     int num_point_in_cloud=0;
@@ -107,7 +107,7 @@ void Voronoi::calculate()
         
         iterator = tok.begin();
 
-        for( ++iterator; iterator!=tok.end();++iterator ){
+        for( ++iterator; iterator!=tok.end();iterator++ ){
             point_region_hull a = { num_point_in_cloud, std::atoi((*iterator ).c_str()) };
             regionsVoronoi.push_back(a);
         }
@@ -115,9 +115,9 @@ void Voronoi::calculate()
 
     }
     
-    #if DEBUG
-    std::cout << "cloud size: " << bigCloud->size() << " " << num_point_in_cloud << std::endl;
-    #endif
+    //#if DEBUG
+    std::cout << "cloud size: " << bigCloud->size() << " " << num_point_in_cloud << " voronoi regions: " << regionsVoronoi.size() << std::endl;
+    //#endif
     
     qhull.clearQhullMessage();
     
