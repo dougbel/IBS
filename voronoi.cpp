@@ -1,11 +1,11 @@
 #include "voronoi.h"
 
 
-Voronoi::Voronoi ( PointCloudT::Ptr pointCloud )
+Voronoi::Voronoi ( pcl::PointCloud<pcl::PointXYZ>::Ptr pointCloud )
 {
     
     // to compute voronoi diagram over all points
-    bigCloud.reset(new PointCloudT);
+    bigCloud.reset(new pcl::PointCloud<pcl::PointXYZ>);
     *bigCloud += *pointCloud;
     
     vornoiVertex.clear();
@@ -57,15 +57,14 @@ void Voronoi::calculate()
     std::getline( qhull_stream,line);
     
     //tokenizer to deal with Qhull output
-    boost::tokenizer<> tok(line);
-    boost::tokenizer<>::iterator iterator = tok.begin();
-    
-    
+    boost::char_separator<char> sep(" ");
+    boost::tokenizer<boost::char_separator<char> > tok(line, sep);
+    boost::tokenizer<boost::char_separator<char> >::iterator iterator = tok.begin();
     
     //read vertex
     int total_vertices;
     
-    total_vertices = std::atoi( (*iterator).c_str() );
+    total_vertices = std::stoi(*iterator);
     
     vornoiVertex.reserve(total_vertices);
     
@@ -75,15 +74,15 @@ void Voronoi::calculate()
     {  
         std::getline( qhull_stream,line);
         
-        
+        tok =boost::tokenizer<boost::char_separator<char> >(line, sep);
         iterator = tok.begin();
         
         pcl::PointXYZ vertex(0,0,0);
-        vertex.x = std::atof((*iterator ).c_str());
+        vertex.x = std::stod(*iterator );
         iterator++;
-        vertex.y = std::atof((*iterator ).c_str());
+        vertex.y = std::stod(*iterator );
         iterator++;
-        vertex.z = std::atof((*iterator ).c_str());
+        vertex.z = std::stod(*iterator );
                 
         vornoiVertex.push_back( vertex);
         num_vertex++;
@@ -103,12 +102,11 @@ void Voronoi::calculate()
     while( std::getline( qhull_stream,line) )
     {  
         
-        tok = boost::tokenizer<>(line);
-        
+        tok =boost::tokenizer<boost::char_separator<char> >(line, sep);
         iterator = tok.begin();
-
+        
         for( ++iterator; iterator!=tok.end();iterator++ ){
-            point_region_hull a = { num_point_in_cloud, std::atoi((*iterator ).c_str()) };
+            point_region_hull a = { num_point_in_cloud, std::stoi(*iterator ) };
             regionsVoronoi.push_back(a);
         }
         num_point_in_cloud++;

@@ -22,7 +22,7 @@ add_definitions(${PCL_DEFINITIONS})
 
 
 #for compiler
-set(SOURCES main.cpp voronoi.cpp StopWatch.cpp)
+set(SOURCES main.cpp voronoi.cpp ibs.cpp StopWatch.cpp)
 set(project_SOURCES main.cpp ${SOURCES})
 
 

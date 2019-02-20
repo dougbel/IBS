@@ -9,6 +9,7 @@
 #include <libqhullcpp/Qhull.h>
 
 #include <boost/tokenizer.hpp>
+#include <boost/algorithm/string.hpp>
 
 
 #include "definitions.h"
@@ -21,14 +22,14 @@ class Voronoi
 public:
     
     
-    Voronoi (PointCloudT::Ptr pointCloud );
+    Voronoi (pcl::PointCloud<pcl::PointXYZ>::Ptr pointCloud );
     
     void calculate();
     
     
-    PointCloudT::Ptr bigCloud;   //TODO cambiarle el nombre a wholeCloud
+    pcl::PointCloud<pcl::PointXYZ>::Ptr bigCloud;   //TODO cambiarle el nombre a wholeCloud
     
-    std::vector< PointT > vornoiVertex;
+    std::vector< pcl::PointXYZ > vornoiVertex;
     
     std::vector< point_region_hull > regionsVoronoi;
     
