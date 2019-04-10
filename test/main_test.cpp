@@ -6,8 +6,6 @@
 #include <pcl/kdtree/kdtree_flann.h>
 #include <pcl/filters/extract_indices.h>
 
-#include <StopWatch.h>
-
 #include "voronoi.h"
 #include "ibs.h"
 
@@ -66,17 +64,17 @@ int main(int argc, char *argv[])
     
     //precalculated IBS
     pcl::PointCloud<pcl::PointXYZ>::Ptr ibs_whole (new pcl::PointCloud<pcl::PointXYZ>);
-    std::string file_ibs_whole = "../test/Place/ibs.pcd";
+    std::string file_ibs_whole = "../../test/Place/ibs.pcd";
     pcl::io::loadPCDFile(file_ibs_whole, *ibs_whole);
     
     //full scene point cloud
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_scene (new pcl::PointCloud<pcl::PointXYZ>);
-    std::string file_scene = "../test/Place/scene_object.pcd";
+    std::string file_scene = "../../test/Place/scene_object.pcd";
     pcl::io::loadPCDFile(file_scene, *cloud_scene);
     
     //query object
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_object (new pcl::PointCloud<pcl::PointXYZ>);
-    std::string file_object = "../test/Place/query_object.pcd";
+    std::string file_object = "../../test/Place/query_object.pcd";
     pcl::io::loadPCDFile(file_object, *cloud_object);
     
     

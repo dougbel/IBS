@@ -1,5 +1,5 @@
 
-#include "Util.h"
+#include "util.h"
 #include "ibs.h"
 
 #include <iostream>
@@ -13,14 +13,14 @@ int main(int argc, char *argv[])
     
     
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_scene (new pcl::PointCloud<pcl::PointXYZ>);
-    std::string file_scene = "../test/Place/sceney_object.pcd";
+    std::string file_scene = "../../test/Place/scene_object.pcd";
     pcl::io::loadPCDFile(file_scene, *cloud_scene);
     
     /*Voronoi voronoi(cloud_scene);
     voronoi.calculate();*/
     
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud_object (new pcl::PointCloud<pcl::PointXYZ>);
-    std::string file_object = "../test/Place/query_object.pcd";
+    std::string file_object = "../../test/Place/query_object.pcd";
     pcl::io::loadPCDFile(file_object, *cloud_object);
     
     

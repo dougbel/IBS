@@ -8,7 +8,7 @@
 #include <pcl/kdtree/kdtree_flann.h>
 #include <pcl/filters/extract_indices.h>
 
-#include "Util.h"
+#include "util.h"
 #include "voronoi.h"
 #include "definitions.h"
 
