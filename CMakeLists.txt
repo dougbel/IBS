@@ -4,7 +4,7 @@ cmake_minimum_required (VERSION 2.6 FATAL_ERROR)
 project(ibs_lib)
 
 # Find includes in corresponding build directories
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
+#set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 
 # Find PCL library
@@ -18,10 +18,15 @@ add_definitions(${PCL_DEFINITIONS})
 set(QHULL_LIBRARIES /usr/local/lib/libqhullcpp.a /usr/local/lib/libqhullstatic_r.a)
 
 #for reference ibs
-set(IBS_DIR ${CMAKE_CURRENT_SOURCE_DIR})
-set(IBS_SOURCES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
-set(IBS_HEADERS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+set(IBS_DIR ${CMAKE_CURRENT_SOURCE_DIR} )
+set(IBS_DIR ${CMAKE_CURRENT_SOURCE_DIR}  PARENT_SCOPE)
+set(IBS_SOURCES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src )
+set(IBS_SOURCES_DIR ${IBS_SOURCES_DIR} PARENT_SCOPE )
 set(IBS_SOURCES ${IBS_SOURCES_DIR}/voronoi.cpp ${IBS_SOURCES_DIR}/ibs.cpp)
+set(IBS_SOURCES ${IBS_SOURCES} PARENT_SCOPE)
+set(IBS_HEADERS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include )
+set(IBS_HEADERS_DIR ${IBS_HEADERS_DIR} PARENT_SCOPE)
 
 
 
