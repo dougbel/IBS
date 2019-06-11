@@ -36,6 +36,9 @@ public:
 private:
     orgQhull::Coordinates cloud_coord;  //TODO change name qhullCloudCoord
     
+    const int DIM = 3;
+    
+    
 };
 
 #endif // VORONOI_H
